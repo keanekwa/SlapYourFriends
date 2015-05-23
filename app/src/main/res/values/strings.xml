@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Friends Slapper</string>
+
+    <string name="title_section1">Slap your friends</string>
+    <string name="title_section2">Who slapped me?</string>
+    <string name="title_section3">Find new friends</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_logout">Logout</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login to Friends Slapper</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="signupnow">Signup Now</string>
+    <string name="newtofriendsslapper">New to Friends Slapper?</string>
+    <string name="wrongusernamepassword">Incorrect username / password combination. Please try again.</string>
+    <string name="welcomeback">Welcome back to Friends Slapper. Have fun slapping!</string>
+    <string name="logout">Logout</string>
+    <string name="loggingin">Logging in</string>
+    <string name="waitwhileloggingin">Please wait while we log you in...</string>
+    <string name="loggingout">Logging out</string>
+    <string name="waitwhileloggingout">Please wait while we log you out...</string>
+    <string name="findnewfriends">Find new friends</string>
+    <string name="title_activity_create_account">Create Friends Slapper Account</string>
+    <string name="emailaddress">Email Address</string>
+    <string name="createaccount">Create Account</string>
+    <string name="creatingnewaccount">Creating new account.</string>
+    <string name="waitregisteraccount">Please wait while we register your account…</string>
+    <string name="nocreateemailwarning">Please enter a email for your new account.</string>
+    <string name="nocreatepasswordwarning">Please enter a password for your new account.</string>
+    <string name="nocreateusernamewarning">Please enter a username for your new account.</string>
+    <string name="nologinpasswordwarning">Please enter your password.</string>
+    <string name="nologinusernamewarning">Please enter your username.</string>
+</resources>
