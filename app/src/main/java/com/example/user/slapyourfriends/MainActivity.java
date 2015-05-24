@@ -130,7 +130,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-
+        mViewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -157,11 +157,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return new SlapFriendsFragment();
                 case 1:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return new WhoSlappedFragment();
                 case 2:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return new FindFriendsFragment();
             }
             return null;
         }
