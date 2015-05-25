@@ -27,27 +27,26 @@ public class FindFriendsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final View v = inflater.inflate(R.layout.fragment_find_friends, container, false);
+        final ListView mFindFriendsListView = (ListView) v.findViewById(R.id.findFriendsListView);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
                     mAllUsersList = objects;
+                    ArrayAdapter<ParseUser> adapter = new FindFriendAdapter(getActivity(), R.layout.list_item_find_friend, mAllUsersList);
+                    mFindFriendsListView.setAdapter(adapter);
                 } else {
                     Log.d("ParseException", e.toString());
                 }
             }
         });
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_find_friends, container, false);
-
-        ListView mFindFriendsListView = (ListView) v.findViewById(R.id.findFriendsListView);
-
-        ArrayAdapter<ParseUser> adapter = new FindFriendAdapter(getActivity(), R.layout.list_item_find_friend, mAllUsersList);
-        mFindFriendsListView.setAdapter(adapter);
         return v;
     }
 
@@ -62,7 +61,6 @@ public class FindFriendsFragment extends Fragment {
     }
 
     private class FindFriendAdapter extends ArrayAdapter<ParseUser> {
-        //creating variables
         private int mResource;
         private List<ParseUser> mUsers;
 
@@ -70,6 +68,8 @@ public class FindFriendsFragment extends Fragment {
             super(context, resource, users);
             mResource = resource;
             mUsers = users;
+            Log.d("users", users.get(0).getUsername());
+            Log.d("mUsers", mUsers.get(0).getUsername());
         }
 
         @Override
