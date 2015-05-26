@@ -18,6 +18,7 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FindFriendsFragment extends Fragment {
@@ -34,11 +35,17 @@ public class FindFriendsFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_find_friends, container, false);
         final ListView mFindFriendsListView = (ListView) v.findViewById(R.id.findFriendsListView);
 
+        //todo message if empty list for all fragments
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
                     mAllUsersList = objects;
+                    for (int i = 0; i < mAllUsersList.size(); i++) {
+                        if (ParseUser.getCurrentUser() == mAllUsersList.get(i)) {
+                            mAllUsersList.remove(mAllUsersList.get(i));
+                        }
+                    }
                     ArrayAdapter<ParseUser> adapter = new FindFriendAdapter(getActivity(), R.layout.list_item_find_friend, mAllUsersList);
                     mFindFriendsListView.setAdapter(adapter);
                 } else {
@@ -68,19 +75,40 @@ public class FindFriendsFragment extends Fragment {
             super(context, resource, users);
             mResource = resource;
             mUsers = users;
-            Log.d("users", users.get(0).getUsername());
-            Log.d("mUsers", mUsers.get(0).getUsername());
         }
-
         @Override
         public View getView(int position, View row, ViewGroup parent) {
             if (row == null) {
                 row = getActivity().getLayoutInflater().inflate(mResource, parent, false);
             }
             final ParseUser mCurrentUser = mUsers.get(position);
-            TextView mUserNameTextView = (TextView) row.findViewById(R.id.usernameTextView);
-            mUserNameTextView.setText(mCurrentUser.getUsername());
-            Button mAddFriendButton = (Button) row.findViewById(R.id.addFriendButton);
+            TextView mUserTextView = (TextView) row.findViewById(R.id.usernameTextView);
+            mUserTextView.setText(mCurrentUser.getUsername());
+            final Button mAddFriendButton = (Button) row.findViewById(R.id.addFriendButton);
+
+            ArrayList<ParseUser> mCheckFriendsList = (ArrayList) ParseUser.getCurrentUser().get("friends");
+            if (mCheckFriendsList != null) {
+                for (int i = 0; i < mCheckFriendsList.size(); i++) {
+                    if (mCurrentUser == mCheckFriendsList.get(i)) {
+                        mAddFriendButton.setEnabled(false);
+                        mAddFriendButton.setText(getString(R.string.addedfriend));
+                    }
+                }
+            }
+            mAddFriendButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ArrayList<ParseUser> mFriendsList = (ArrayList) ParseUser.getCurrentUser().get("friends");
+                    if (mFriendsList == null) {
+                        mFriendsList = new ArrayList<>();
+                    }
+                    mFriendsList.add(mCurrentUser);
+                    ParseUser.getCurrentUser().put("friends", mFriendsList);
+                    ParseUser.getCurrentUser().saveInBackground();
+                    mAddFriendButton.setEnabled(false);
+                    mAddFriendButton.setText(getString(R.string.addedfriend));
+                }
+            });
 
             return row;
         }

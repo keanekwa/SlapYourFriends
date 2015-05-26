@@ -34,4 +34,10 @@
     <string name="nologinpasswordwarning">Please enter your password.</string>
     <string name="nologinusernamewarning">Please enter your username.</string>
     <string name="addfriend">Add Friend</string>
+    <string name="friend">Friend:</string>
+    <string name="slapfriend">Slap Friend</string>
+    <string name="addedfriend">Added Friend</string>
+    <string name="nofriendstoslap">You do not have any friends. Add some friends to start slapping!</string>
+    <string name="youhaveslapped">You have slapped</string>
+    <string name="space">" "</string>
 </resources>
