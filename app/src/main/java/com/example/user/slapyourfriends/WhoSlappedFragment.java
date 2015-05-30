@@ -29,7 +29,14 @@ public class WhoSlappedFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return onResume(inflater, container, savedInstanceState);
+    }
+
+    public View onResume(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onResume();
+
         final View v = inflater.inflate(R.layout.fragment_who_slapped, container, false);
+
         final ListView mWhoSlappedListView = (ListView) v.findViewById(R.id.whoSlappedListView);
         TextView mWhoSlappedHeadingTextView = (TextView) v.findViewById(R.id.whoSlappedHeadingTextView);
 
@@ -44,13 +51,8 @@ public class WhoSlappedFragment extends Fragment {
             ArrayAdapter<ParseUser> adapter = new SlapFriendsAdapter(getActivity(), R.layout.list_item_who_slapped, mWhoSlappedList);
             mWhoSlappedListView.setAdapter(adapter);
         }
-        return v;
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("resume", "who slapped fragment");
+        return v;
     }
 
     @Override
@@ -84,6 +86,7 @@ public class WhoSlappedFragment extends Fragment {
                 mCurrentWhoSlappedUsername = mCurrentWhoSlapped.fetchIfNeeded().getString("username");
             } catch (ParseException e) {
                 Log.v("Friend name ParseExp", e.toString());
+                Toast.makeText(getContext(), getString(R.string.parseexceptiontoast), Toast.LENGTH_SHORT).show();
             }
             mWhoSlappedTextView.setText(mCurrentWhoSlappedUsername);
             Button mSlapBackButton = (Button) row.findViewById(R.id.slapBackButton);

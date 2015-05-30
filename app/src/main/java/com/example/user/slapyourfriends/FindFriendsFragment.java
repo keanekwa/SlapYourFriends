@@ -32,10 +32,14 @@ public class FindFriendsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return onResume(inflater, container, savedInstanceState);
+    }
+
+    public View onResume(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onResume();
         final View v = inflater.inflate(R.layout.fragment_find_friends, container, false);
         final ListView mFindFriendsListView = (ListView) v.findViewById(R.id.findFriendsListView);
 
-        //todo message if empty list for all fragments
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> objects, ParseException e) {
@@ -49,18 +53,12 @@ public class FindFriendsFragment extends Fragment {
                     ArrayAdapter<ParseUser> adapter = new FindFriendAdapter(getActivity(), R.layout.list_item_find_friend, mAllUsersList);
                     mFindFriendsListView.setAdapter(adapter);
                 } else {
-                    Log.d("ParseException", e.toString());
+                    Log.d("Find Friend ParseExp", e.toString());
                 }
             }
         });
 
         return v;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("resume", "find friends fragment");
     }
 
     @Override

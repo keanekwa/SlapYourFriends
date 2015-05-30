@@ -45,6 +45,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportFragmentManager().addOnBackStackChangedListener(getListener());
+
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             Toast.makeText(getApplicationContext(), getString(R.string.welcomeback), Toast.LENGTH_SHORT).show();

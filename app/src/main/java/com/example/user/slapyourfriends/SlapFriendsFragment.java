@@ -29,6 +29,12 @@ public class SlapFriendsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return onResume(inflater, container, savedInstanceState);
+    }
+
+    public View onResume(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onResume();
+
         final View v = inflater.inflate(R.layout.fragment_slap_friends, container, false);
         final ListView mSlapFriendsListView = (ListView) v.findViewById(R.id.slapFriendsListView);
         TextView mSlapFriendsHeadingTextView = (TextView) v.findViewById(R.id.slapFriendHeadingTextView);
@@ -42,12 +48,6 @@ public class SlapFriendsFragment extends Fragment {
             mSlapFriendsListView.setAdapter(adapter);
         }
         return v;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("resume", "slap friends fragment");
     }
 
     @Override
@@ -81,6 +81,7 @@ public class SlapFriendsFragment extends Fragment {
                 mCurrentFriendUsername = mCurrentFriend.fetchIfNeeded().getString("username");
             } catch (ParseException e) {
                 Log.v("Friend name ParseExp", e.toString());
+                Toast.makeText(getContext(), getString(R.string.parseexceptiontoast), Toast.LENGTH_SHORT).show();
             }
             mFriendTextView.setText(mCurrentFriendUsername);
             Button mAddFriendButton = (Button) row.findViewById(R.id.slapBackButton);

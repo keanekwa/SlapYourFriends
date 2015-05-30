@@ -44,4 +44,5 @@
     <string name="youhaveslappedback">You have slapped back</string>
     <string name="slapback">Slap back</string>
     <string name="whoslappedyou">Who Slapped You:</string>
+    <string name="parseexceptiontoast">Unknown error occurred. Please logout and login again.</string>
 </resources>
