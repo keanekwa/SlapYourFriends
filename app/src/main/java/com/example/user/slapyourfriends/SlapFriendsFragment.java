@@ -45,6 +45,12 @@ public class SlapFriendsFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("resume", "slap friends fragment");
+    }
+
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
     }
@@ -77,7 +83,7 @@ public class SlapFriendsFragment extends Fragment {
                 Log.v("Friend name ParseExp", e.toString());
             }
             mFriendTextView.setText(mCurrentFriendUsername);
-            Button mAddFriendButton = (Button) row.findViewById(R.id.slapFriendButton);
+            Button mAddFriendButton = (Button) row.findViewById(R.id.slapBackButton);
 
             mAddFriendButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,6 +92,7 @@ public class SlapFriendsFragment extends Fragment {
                     if (mWhoSlappedList == null) {
                         mWhoSlappedList = new ArrayList<>();
                     }
+                    mWhoSlappedList.add(ParseUser.getCurrentUser());
                     mCurrentFriend.put("whoslapped", mWhoSlappedList);
                     mCurrentFriend.saveInBackground();
                     Toast.makeText(getContext(), getString(R.string.youhaveslapped) + getString(R.string.space) + mCurrentFriend.getUsername(), Toast.LENGTH_SHORT).show();
