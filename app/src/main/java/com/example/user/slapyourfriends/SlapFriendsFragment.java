@@ -33,7 +33,8 @@ public class SlapFriendsFragment extends Fragment {
         final ListView mSlapFriendsListView = (ListView) v.findViewById(R.id.slapFriendsListView);
         TextView mSlapFriendsHeadingTextView = (TextView) v.findViewById(R.id.slapFriendHeadingTextView);
 
-        ArrayList mFriendsList = (ArrayList) ParseUser.getCurrentUser().get("friends");
+        ArrayList<ParseUser> mFriendsList = (ArrayList) ParseUser.getCurrentUser().get("whoslapped");
+
         if (mFriendsList == null) {
             mSlapFriendsHeadingTextView.setText(getString(R.string.nofriendstoslap));
         }

@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -48,13 +47,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        /*ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             Toast.makeText(getApplicationContext(), getString(R.string.welcomeback), Toast.LENGTH_SHORT).show();
-        } else {
+        } else {*/
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             MainActivity.this.startActivity(intent);
-        }
+        //}
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
