@@ -40,8 +40,4 @@
     <string name="nofriendstoslap">You do not have any friends. Add some friends to start slapping!</string>
     <string name="youhaveslapped">You have slapped</string>
     <string name="space">" "</string>
-    <string name="nobodyslappedyou">Yay, no one has slapped you yet!</string>
-    <string name="youhaveslappedback">You have slapped back</string>
-    <string name="slapback">Slap back</string>
-    <string name="whoslappedyou">Who Slapped You:</string>
 </resources>

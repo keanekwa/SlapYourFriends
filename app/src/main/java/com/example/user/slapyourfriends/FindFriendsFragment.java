@@ -58,12 +58,6 @@ public class FindFriendsFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("resume", "find friends fragment");
-    }
-
-    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
     }

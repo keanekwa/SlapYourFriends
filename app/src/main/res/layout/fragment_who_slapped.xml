@@ -4,22 +4,10 @@
              android:layout_height="match_parent"
              tools:context="com.example.user.slapyourfriends.WhoSlappedFragment">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/whoSlappedListView"
-        android:layout_gravity="start|top"
-        android:layout_marginTop="40dp"/>
-
+    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/whoslappedyou"
-        android:id="@+id/whoSlappedHeadingTextView"
-        android:layout_gravity="start|top"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"/>
-</FrameLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="WHOSLAPPEDFRAGMENT"/>
 
+</FrameLayout>
